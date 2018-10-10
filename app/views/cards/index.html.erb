@@ -1,0 +1,10 @@
+
+<h1>Magic: the Gathering Cards</h1>
+
+<ul>
+    <% @card.each do |c| %>
+        <li>
+            <%= c.name %>
+        </li>
+    <% end %>
+</ul>
