@@ -11,6 +11,7 @@ class CreateCards < ActiveRecord::Migration[5.2]
     	t.integer 	:power
     	t.string 	:expansions, null: false
     	t.string 	:rarity, null: false
+        t.string    :toughness
     	t.string 	:types, null: false
 
       	t.timestamps
