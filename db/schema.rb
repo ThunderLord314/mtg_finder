@@ -19,17 +19,19 @@ ActiveRecord::Schema.define(version: 2018_10_10_144000) do
   end
 
   create_table "cards", force: :cascade do |t|
-    t.string "name", null: false
-    t.string "artist", null: false
-    t.integer "cmc", null: false
+    t.string "name"
+    t.string "artist"
+    t.integer "cmc"
     t.string "colors"
     t.string "image"
     t.string "layout"
-    t.string "mana_cost", null: false
+    t.string "mana_cost"
     t.integer "power"
-    t.string "expansions", null: false
-    t.string "rarity", null: false
-    t.string "types", null: false
+    t.string "expansions"
+    t.string "rarity"
+    t.string "text"
+    t.integer "toughness"
+    t.string "types"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
