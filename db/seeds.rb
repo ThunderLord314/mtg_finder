@@ -28,27 +28,20 @@ expansion_hash.each do |input|
 								)
 	# Loop through all of the cards in an expansion and add them to the database
 	input[1]["cards"].each do |card_in|
-		# If the card is in the database, update it instead of creating a new entry
-		update_card = Card.where(name: card_in['name'])
-		if update_card.name == "Card"
-			puts "Creating Card: #{card_in["name"]}"
-			Card.create(	name: card_in['name'],
-							artist: card_in['artist'],
-							cmc: card_in['cmc'],
-							colors: card_in['colors'],
-							layout: card_in['layout'],
-							mana_cost: card_in['manaCost'],
-							power: card_in['power'],
-							expansions: expansion.expansion_name,
-							rarity: card_in['rarity'],
-							text: card_in['text'],
-							toughness: card_in['toughness'],
-							types: card_in['type'],
-						)
-		else
-			puts "Updating: #{update_card.name}"
-			# Don't duplicate already existing entries
-		end
+		puts "Creating Card: #{card_in["name"]}"
+		Card.create(	name: card_in['name'],
+						artist: card_in['artist'],
+						cmc: card_in['cmc'],
+						colors: card_in['colors'],
+						layout: card_in['layout'],
+						mana_cost: card_in['manaCost'],
+						power: card_in['power'],
+						expansions: expansion.expansion_name,
+						rarity: card_in['rarity'],
+						text: card_in['text'],
+						toughness: card_in['toughness'],
+						types: card_in['type'],
+					)
 	end
 end
 

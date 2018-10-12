@@ -10,12 +10,30 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_10_11_215843) do
+ActiveRecord::Schema.define(version: 2018_10_12_161711) do
 
   create_table "artists", force: :cascade do |t|
     t.string "artist_name", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "cardartists", force: :cascade do |t|
+    t.integer "Card_id"
+    t.integer "Artist_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["Artist_id"], name: "index_cardartists_on_Artist_id"
+    t.index ["Card_id"], name: "index_cardartists_on_Card_id"
+  end
+
+  create_table "cardexpansions", force: :cascade do |t|
+    t.integer "Card_id"
+    t.integer "Expansion_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["Card_id"], name: "index_cardexpansions_on_Card_id"
+    t.index ["Expansion_id"], name: "index_cardexpansions_on_Expansion_id"
   end
 
   create_table "cards", force: :cascade do |t|
@@ -61,6 +79,15 @@ ActiveRecord::Schema.define(version: 2018_10_11_215843) do
     t.datetime "updated_at", null: false
     t.index ["cards_id"], name: "index_cards_types_on_cards_id"
     t.index ["types_id"], name: "index_cards_types_on_types_id"
+  end
+
+  create_table "cardtypes", force: :cascade do |t|
+    t.integer "Card_id"
+    t.integer "Type_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["Card_id"], name: "index_cardtypes_on_Card_id"
+    t.index ["Type_id"], name: "index_cardtypes_on_Type_id"
   end
 
   create_table "expansions", force: :cascade do |t|
