@@ -20,7 +20,6 @@ end
 expansion_file = File.read(File.join(current_path, json_path, expansion_file_location))
 expansion_hash = JSON.parse(expansion_file)
 expansion_hash.each do |input|
-	expansion = Expansion.where(expansion_name: input[1]["name"])
 	# Create an expansion in the database for each record in the JSON data
 	expansion = Expansion.create(	expansion_name: input[1]["name"],
 									short_code: input[1]["code"],

@@ -10,30 +10,57 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_10_10_144000) do
+ActiveRecord::Schema.define(version: 2018_10_11_215843) do
 
   create_table "artists", force: :cascade do |t|
-    t.string "name", null: false
+    t.string "artist_name", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "cards", force: :cascade do |t|
-    t.string "name"
-    t.string "artist"
+    t.string "name", null: false
+    t.string "artist", null: false
     t.integer "cmc"
     t.string "colors"
-    t.string "image"
+    t.string "image", null: false
     t.string "layout"
     t.string "mana_cost"
     t.integer "power"
-    t.string "expansions"
+    t.string "expansions", null: false
     t.string "rarity"
     t.string "text"
     t.integer "toughness"
     t.string "types"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "cards_artists", force: :cascade do |t|
+    t.integer "cards_id"
+    t.integer "artists_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["artists_id"], name: "index_cards_artists_on_artists_id"
+    t.index ["cards_id"], name: "index_cards_artists_on_cards_id"
+  end
+
+  create_table "cards_expansions", force: :cascade do |t|
+    t.integer "cards_id"
+    t.integer "expansions_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["cards_id"], name: "index_cards_expansions_on_cards_id"
+    t.index ["expansions_id"], name: "index_cards_expansions_on_expansions_id"
+  end
+
+  create_table "cards_types", force: :cascade do |t|
+    t.integer "cards_id"
+    t.integer "types_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["cards_id"], name: "index_cards_types_on_cards_id"
+    t.index ["types_id"], name: "index_cards_types_on_types_id"
   end
 
   create_table "expansions", force: :cascade do |t|
