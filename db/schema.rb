@@ -45,11 +45,11 @@ ActiveRecord::Schema.define(version: 2018_10_12_161711) do
     t.string "layout"
     t.string "mana_cost"
     t.integer "power"
-    t.string "expansions", null: false
+    t.string "expansion", null: false
     t.string "rarity"
     t.string "text"
     t.integer "toughness"
-    t.string "types"
+    t.string "all_type"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

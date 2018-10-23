@@ -21,6 +21,7 @@ expansion_file = File.read(File.join(current_path, json_path, expansion_file_loc
 expansion_hash = JSON.parse(expansion_file)
 expansion_hash.each do |input|
 	# Create an expansion in the database for each record in the JSON data
+	puts "EXPANSION: #{input[1]["name"]}"
 	expansion = Expansion.create(	expansion_name: input[1]["name"],
 									short_code: input[1]["code"],
 									release_date: input[1]["releaseDate"],
@@ -28,12 +29,8 @@ expansion_hash.each do |input|
 								)
 	# Loop through all of the cards in an expansion and add them to the database
 	input[1]["cards"].each do |card_in|
-		puts "Creating Card: #{card_in["name"]}"
 		# Creates a new card if one does not exist; otherwise update the artist and expansion
-		card_update = Card.where(name: card_in['name'])
-		card_update.artist << ",#{card_in['artist']}"
-		card_update.expansions << ",#{expansion.expansion_name}"
-		card_update.save
+		puts "Creating Card: #{card_in["name"]}"
 		card = Card.create_with(
 						artist: card_in['artist'],
 						cmc: card_in['cmc'],
@@ -41,19 +38,21 @@ expansion_hash.each do |input|
 						layout: card_in['layout'],
 						mana_cost: card_in['manaCost'],
 						power: card_in['power'],
-						expansions: expansion.expansion_name,
+						expansion: expansion.expansion_name,
 						rarity: card_in['rarity'],
 						text: card_in['text'],
 						toughness: card_in['toughness'],
-						types: card_in['type'],
+						all_type: card_in['type'],
 						).find_or_create_by(name: card_in['name'])
 
 		# Creates an artist if it does not exist; I do not use the found entry from the find
 		Artist.find_or_create_by(artist_name: card_in['artist'])
 		# Go through each of the subtypes and add them to the database if they do not exist
 		# Types and supertypes will be hard-coded, as I don't expect new entries
-		card_in['subtypes'].each do |type|
-			Type.create_with(category: "subtype").find_or_create_by(type_name: type)
+		if !card_in['subtypes'].nil?
+			card_in['subtypes'].each do |type|
+				Type.create_with(category: "subtype").find_or_create_by(type_name: type)
+			end
 		end
 	end
 end

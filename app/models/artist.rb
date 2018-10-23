@@ -1,5 +1,6 @@
 class Artist < ApplicationRecord
-	has_many :cards, through: :cards_artists
+	has_many :cardartists
+	has_many :cards, through: :cardartists
 
-	validates :artist_name, presence: true, unqiueness: true
+	validates :artist_name, presence: true, uniqueness: true
 end

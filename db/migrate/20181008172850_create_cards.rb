@@ -9,11 +9,11 @@ class CreateCards < ActiveRecord::Migration[5.2]
     	t.string 	:layout
     	t.string 	:mana_cost
     	t.integer 	:power
-    	t.string 	:expansions, null: false
+    	t.string 	:expansion, null: false
     	t.string 	:rarity
         t.string    :text
         t.integer   :toughness
-    	t.string 	:types
+    	t.string 	:all_type
 
       	t.timestamps
     end

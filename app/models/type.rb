@@ -1,6 +1,7 @@
 class Type < ApplicationRecord
-	has_many :cards, through: :cards_types
+	has_many :cardtypes
+	has_many :cards, through: :cardtypes
 
-	validates :type_name, presence: true, unique: true
-	validates :category presence: true
+	validates :type_name, presence: true, uniqueness: true
+	validates :category, presence: true
 end
