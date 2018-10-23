@@ -29,7 +29,12 @@ expansion_hash.each do |input|
 	# Loop through all of the cards in an expansion and add them to the database
 	input[1]["cards"].each do |card_in|
 		puts "Creating Card: #{card_in["name"]}"
-		Card.create(	name: card_in['name'],
+		# Creates a new card if one does not exist; otherwise update the artist and expansion
+		card_update = Card.where(name: card_in['name'])
+		card_update.artist << ",#{card_in['artist']}"
+		card_update.expansions << ",#{expansion.expansion_name}"
+		card_update.save
+		card = Card.create_with(
 						artist: card_in['artist'],
 						cmc: card_in['cmc'],
 						colors: card_in['colors'],
@@ -41,8 +46,17 @@ expansion_hash.each do |input|
 						text: card_in['text'],
 						toughness: card_in['toughness'],
 						types: card_in['type'],
-					)
+						).find_or_create_by(name: card_in['name'])
+
+		# Creates an artist if it does not exist; I do not use the found entry from the find
+		Artist.find_or_create_by(artist_name: card_in['artist'])
+		# Go through each of the subtypes and add them to the database if they do not exist
+		# Types and supertypes will be hard-coded, as I don't expect new entries
+		card_in['subtypes'].each do |type|
+			Type.create_with(category: "subtype").find_or_create_by(type_name: type)
+		end
 	end
 end
+# Add type and supertypes here
 
 puts "Seed Complete."

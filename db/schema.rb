@@ -19,21 +19,21 @@ ActiveRecord::Schema.define(version: 2018_10_12_161711) do
   end
 
   create_table "cardartists", force: :cascade do |t|
-    t.integer "Card_id"
-    t.integer "Artist_id"
+    t.integer "card_id"
+    t.integer "artist_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["Artist_id"], name: "index_cardartists_on_Artist_id"
-    t.index ["Card_id"], name: "index_cardartists_on_Card_id"
+    t.index ["artist_id"], name: "index_cardartists_on_artist_id"
+    t.index ["card_id"], name: "index_cardartists_on_card_id"
   end
 
   create_table "cardexpansions", force: :cascade do |t|
-    t.integer "Card_id"
-    t.integer "Expansion_id"
+    t.integer "card_id"
+    t.integer "expansion_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["Card_id"], name: "index_cardexpansions_on_Card_id"
-    t.index ["Expansion_id"], name: "index_cardexpansions_on_Expansion_id"
+    t.index ["card_id"], name: "index_cardexpansions_on_card_id"
+    t.index ["expansion_id"], name: "index_cardexpansions_on_expansion_id"
   end
 
   create_table "cards", force: :cascade do |t|
@@ -54,40 +54,13 @@ ActiveRecord::Schema.define(version: 2018_10_12_161711) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "cards_artists", force: :cascade do |t|
-    t.integer "cards_id"
-    t.integer "artists_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["artists_id"], name: "index_cards_artists_on_artists_id"
-    t.index ["cards_id"], name: "index_cards_artists_on_cards_id"
-  end
-
-  create_table "cards_expansions", force: :cascade do |t|
-    t.integer "cards_id"
-    t.integer "expansions_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["cards_id"], name: "index_cards_expansions_on_cards_id"
-    t.index ["expansions_id"], name: "index_cards_expansions_on_expansions_id"
-  end
-
-  create_table "cards_types", force: :cascade do |t|
-    t.integer "cards_id"
-    t.integer "types_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["cards_id"], name: "index_cards_types_on_cards_id"
-    t.index ["types_id"], name: "index_cards_types_on_types_id"
-  end
-
   create_table "cardtypes", force: :cascade do |t|
-    t.integer "Card_id"
-    t.integer "Type_id"
+    t.integer "card_id"
+    t.integer "type_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["Card_id"], name: "index_cardtypes_on_Card_id"
-    t.index ["Type_id"], name: "index_cardtypes_on_Type_id"
+    t.index ["card_id"], name: "index_cardtypes_on_card_id"
+    t.index ["type_id"], name: "index_cardtypes_on_type_id"
   end
 
   create_table "expansions", force: :cascade do |t|
