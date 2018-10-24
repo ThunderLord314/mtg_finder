@@ -1,10 +1,12 @@
 
 <h1>Magic: the Gathering Cards</h1>
 
+<h2>10 Random Cards:</h2>
+
 <ul>
     <% @cards.each do |card| %>
         <li>
-            <%= link_to card.name, card %>
+            <%= card.name %>
         </li>
     <% end %>
 </ul>
