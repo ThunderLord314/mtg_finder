@@ -1,6 +1,6 @@
 class CardsController < ApplicationController
 	def index
-		@cards = Card.all.sample(10)
+		@cards = Card.all
 	end
 
 	def show
