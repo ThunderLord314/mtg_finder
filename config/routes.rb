@@ -8,5 +8,10 @@ Rails.application.routes.draw do
   get 'about' => 'about#index'
 
   get 'artists/:id', to: 'artists#show', id: /\d+/ 
+
   get 'expansions/:id', to: 'expansions#show', id: /\d+/
+
+  get 'search' => 'search#index'
+
+  get 'advancedsearch' => 'advancedsearch#index'
 end
