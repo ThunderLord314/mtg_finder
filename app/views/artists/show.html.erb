@@ -1,0 +1,7 @@
+<h2><u><%= @artist.artist_name %></u></h2>
+<% card_names = "" %>
+<% @artist.cards.each {|card| card_names << "#{card.name}, "} %>
+<p>
+    <b>Name:</b> <%= @artist.artist_name %><br>
+    <b>Cards:</b> <%= card_names.split.reverse.uniq.reverse.join(' ') %> <br>
+</p>

@@ -6,4 +6,7 @@ Rails.application.routes.draw do
   get 'cards/:id', to: 'cards#show', id: /\d+/
 
   get 'about' => 'about#index'
+
+  get 'artists/:id', to: 'artists#show', id: /\d+/ 
+  get 'expansions/:id', to: 'expansions#show', id: /\d+/
 end

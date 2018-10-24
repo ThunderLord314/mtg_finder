@@ -5,8 +5,8 @@
 <% @card.artists.each {|art| artist_names << "#{art.artist_name}, "} %>
 <p>
     <b>Name:</b> <%= @card.name %><br>
-    <b>Expansion:</b> <%= expansion_names %> <br>
-    <b>Artist:</b> <%= artist_names %><br>
+    <b>Expansion:</b> <%= expansion_names.split.reverse.uniq.reverse.join(' ') %> <br>
+    <b>Artist:</b> <%= artist_names.split.reverse.uniq.reverse.join(' ') %><br>
     <b>Mana Cost:</b> <%= @card.mana_cost %><br>
     <b>Colours:</b> <%= @card.colors %><br>
     <b>Rarity:</b> <%= @card.rarity %><br>
