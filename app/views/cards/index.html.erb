@@ -2,9 +2,9 @@
 <h1>Magic: the Gathering Cards</h1>
 
 <ul>
-    <% @card.each do |c| %>
+    <% @cards.each do |card| %>
         <li>
-            <%= c.name %>
+            <%= link_to card.name, card %>
         </li>
     <% end %>
 </ul>

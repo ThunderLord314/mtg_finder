@@ -31,20 +31,21 @@ expansion_hash.each do |input|
 	input[1]["cards"].each do |card_in|
 		# Creates a new card if one does not exist; otherwise update the artist and expansion
 		puts "Creating Card: #{card_in["name"]}"
-		card = Card.create_with(
-						artist: card_in['artist'],
-						cmc: card_in['cmc'],
-						colors: card_in['colors'],
-						layout: card_in['layout'],
-						mana_cost: card_in['manaCost'],
-						power: card_in['power'],
-						expansion: expansion.expansion_name,
-						rarity: card_in['rarity'],
-						text: card_in['text'],
-						toughness: card_in['toughness'],
-						all_type: card_in['type'],
-						).find_or_create_by(name: card_in['name'])
-
+		Card.find_or_create_by!(name: card_in['name']) do |card|
+			card.artist = card_in['artist']
+			card.cmc = card_in['cmc']
+			card.colors = card_in['colors']
+			card.layout = card_in['layout']
+			card.mana_cost = card_in['manaCost']
+			card.power = card_in['power']
+			card.expansion = expansion.expansion_name
+			card.rarity = card_in['rarity']
+			card.text = card_in['text']
+			card.toughness = card_in['tougness']
+			card.all_type = card_in['type']
+			card.image = card_in['imageName']
+			card.save
+		end
 		# Creates an artist if it does not exist; I do not use the found entry from the find
 		Artist.find_or_create_by(artist_name: card_in['artist'])
 		# Go through each of the subtypes and add them to the database if they do not exist
