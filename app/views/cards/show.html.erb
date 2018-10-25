@@ -11,9 +11,15 @@
     <% end %><br>
     <b>Mana Cost:</b> <%= @card.mana_cost %><br>
     <b>Colours:</b> <%= @card.colors %><br>
-    <b>Rarity:</b> <%= @card.rarity %><br>
-    <b>Text:</b> <%= @card.text %><br>
     <b>Types:</b> <%= @card.all_type %><br>
+    <b>Text:</b> <%= @card.text %><br>
+    <% if !@card.power.nil? %>
+        <b>Power:</b> <%= @card.power %><br>
+    <% end %>
+    <% if !@card.toughness.nil? %>
+        <b>Power:</b> <%= @card.power %><br>
+    <% end %>
+    <b>Rarity:</b> <%= @card.rarity %><br>
     <br>
     <%= link_to "Back", cards_path %>
 </p>

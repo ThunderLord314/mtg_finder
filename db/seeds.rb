@@ -79,7 +79,7 @@ expansion_hash.each do |input|
 			card.expansion = expansion.expansion_name
 			card.rarity = card_in['rarity']
 			card.text = card_in['text']
-			card.toughness = card_in['tougness']
+			card.toughness = card_in['toughness']
 			card.all_type = card_in['type']
 			card.image = card_in['imageName']
 			card.save
