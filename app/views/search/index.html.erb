@@ -1,5 +1,17 @@
 
 <h1>Search by Name</h1>
 
-<form>
+<form action="<%= search_path %>" method="get">
+	<%= text_field_tag :name, params[:name] %>
+	<%= submit_tag 'Search', name: nil %>
 </form>
+<% if !params[:name].nil? %>
+	<h1>Search Results</h1>
+	<ul>
+	    <% @cards.each do |card| %>
+	        <li>
+	            <%= link_to card.name, controller: "cards", action: "show", id: card %>
+	        </li>
+	    <% end %>
+	</ul>
+<% end %>

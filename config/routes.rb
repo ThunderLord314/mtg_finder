@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   get 'expansions/:id', to: 'expansions#show', id: /\d+/
 
   get 'search' => 'search#index'
+  get 'search' => 'search#show'
 
   get 'advancedsearch' => 'advancedsearch#index'
 end
