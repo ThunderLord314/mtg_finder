@@ -15,4 +15,6 @@ Rails.application.routes.draw do
   get 'search' => 'search#show'
 
   get 'advancedsearch' => 'advancedsearch#index'
+
+  get 'random' => 'cards#show'
 end
