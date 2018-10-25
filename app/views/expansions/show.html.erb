@@ -1,9 +1,8 @@
 <h2><u><%= @expansion.expansion_name %></u></h2>
-<% card_names = "" %>
-<% @expansion.cards.each {|card| card_names << "#{card.name}, "} %>
-<p>
-    <b>Name:</b> <%= @expansion.expansion_name %><br>
-    <b>Code:</b> <%= @expansion.short_code %><br>
-    <b>Release Date:</b> <%= @expansion.release_date %><br>
-    <b>Cards:</b> <%= card_names.split.reverse.uniq.reverse.join(' ') %> <br>
-</p>
+<b>Code:</b> <%= @expansion.short_code %><br>
+<b>Release Date:</b> <%= @expansion.release_date %><br>
+<ul>
+	<% @expansion.cards.each do |card| %>
+        <li><%= link_to card.name, controller: "cards", action: "show", id: card %></li>
+    <% end %>
+</ul>

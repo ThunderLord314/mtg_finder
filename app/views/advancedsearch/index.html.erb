@@ -1,0 +1,10 @@
+
+<h1>Advanced Search</h1>
+
+<form action="<%= advancedsearch_path %>" method="post">
+	<b>Name:</b><%= text_field_tag :name, params[:name] %><br>
+	<b>Expansion:</b><%= text_field_tag :expansion, params[:expansion] %><br>
+	<b>Artist:</b><%= text_field_tag :artist, params[:artist] %><br>
+	<b>Rarity:</b><%= text_field_tag :rarity, params[:rarity] %><br>
+	<%= submit_tag 'Search', name: nil %>
+</form>

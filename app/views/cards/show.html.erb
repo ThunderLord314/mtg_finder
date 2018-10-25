@@ -1,12 +1,14 @@
 <h2><u><%= @card.name %></u></h2>
-<% expansion_names = "" %>
-<% @card.expansions.each {|exp| expansion_names << "#{exp.expansion_name}, "} %>
 <% artist_names = "" %>
 <% @card.artists.each {|art| artist_names << "#{art.artist_name}, "} %>
 <p>
     <b>Name:</b> <%= @card.name %><br>
-    <b>Expansion:</b> <%= expansion_names.split.reverse.uniq.reverse.join(' ') %> <br>
-    <b>Artist:</b> <%= artist_names.split.reverse.uniq.reverse.join(' ') %><br>
+    <b>Expansion:</b> <% @card.expansions.each do |exp| %>
+        <%= link_to exp.expansion_name, controller: "expansions", action: "show", id: exp %>
+    <% end %><br>
+    <b>Artist:</b> <% @card.artists.each do |art| %>
+        <%= link_to art.artist_name, controller: "artists", action: "show", id: art %>
+    <% end %><br>
     <b>Mana Cost:</b> <%= @card.mana_cost %><br>
     <b>Colours:</b> <%= @card.colors %><br>
     <b>Rarity:</b> <%= @card.rarity %><br>

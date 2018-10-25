@@ -15,7 +15,7 @@
       <ul>
         <li><%= link_to "Home Page", cards_path %></li>
         <li><%= link_to "Search by Name", search_path %></li>
-        <li>Advanced Search</li>
+        <li><%= link_to "Advanced Search", advancedsearch_path %></li>
         <li><%= link_to "Random Card", controller: "cards", action: "show", id: rand(Card.count) %></li>
         <li><%= link_to "About Page", about_path %></li>
       </ul>
