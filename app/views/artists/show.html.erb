@@ -1,6 +1,8 @@
 <h2><u><%= @artist.artist_name %></u></h2>
+<%= paginate @cards %>
 <ul>
-	<% @artist.cards.each do |card| %>
+	<% @cards.each do |card| %>
         <li><%= link_to card.name, controller: "cards", action: "show", id: card %></li>
     <% end %>
 </ul>
+<%= paginate @cards %>

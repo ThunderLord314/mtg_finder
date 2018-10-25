@@ -1,8 +1,10 @@
 <h2><u><%= @expansion.expansion_name %></u></h2>
 <b>Code:</b> <%= @expansion.short_code %><br>
 <b>Release Date:</b> <%= @expansion.release_date %><br>
+<%= paginate @cards %>
 <ul>
-	<% @expansion.cards.each do |card| %>
+	<% @cards.each do |card| %>
         <li><%= link_to card.name, controller: "cards", action: "show", id: card %></li>
     <% end %>
 </ul>
+<%= paginate @cards %>
